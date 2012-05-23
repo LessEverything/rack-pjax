@@ -16,7 +16,8 @@ module Rack
         new_body = ""
         body.each do |b|
           parsed_body = Hpricot.XML(b)
-          container = parsed_body.at("[@data-pjax-container]")
+          container = parsed_body.at(env['HTTP_X_PJAX_CONTAINER'])
+          container = parsed_body.at("[@data-pjax-container]") unless container
           if container
             title = parsed_body.at("title")
 
