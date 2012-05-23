@@ -41,7 +41,7 @@ describe Rack::Pjax do
 
       get "/", {}, {"HTTP_X_PJAX" => "true"}
 
-      body.should == '<article>World!<img src="test.jpg" /></article>'
+      body.should == '<article>World!<img src="test.jpg"></article>'
     end
 
     it "should handle nesting of elements inside anchor tags" do
