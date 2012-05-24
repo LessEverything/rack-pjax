@@ -36,7 +36,7 @@ module Rack
 
         headers['Content-Length'] &&= bytesize(new_body).to_s
         request = Rack::Request.new(env)
-        headers['X-PJAX-URL'] = request.fullpath
+        headers['X-PJAX-URL'] ||= request.fullpath
       end
       [status, headers, body]
     end
